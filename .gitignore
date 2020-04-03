@@ -1,4 +1,4 @@
-/*
 !.gitignore
-!mypy/*
+mypy/*
 fish_variables
+file_abbr.fish

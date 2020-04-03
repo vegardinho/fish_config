@@ -1,0 +1,2 @@
+printf "hei" 
+echo "hei"
