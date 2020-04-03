@@ -9,6 +9,13 @@ function new
     fish_greeting
 end
 
+# Autocomplete test
+# complete -c myprog -a "~/Documents/Progging"
+# complete -c myprog -a "yes no"
+
+# Fix for å kunne kopiere utf-8-tegn (tidligere export LC_ALL=en_US.UTF-8 i bash_profile)
+set -gx LC_ALL en_US.UTF-8
+
 # Quick tmp
 function tmp
     cd $HOME/Development/.tmp
@@ -37,62 +44,61 @@ abbr -a -g gb git branch
 abbr -a -g gcm git checkout master
 abbr -a -g gd git diff
 abbr -a -g gclone git clone
+abbr -a -g git_dow "curl -s https://api.github.com/repos/vegardinho/alfred_bluetooth_controller/releases | egrep '\"name\"|\"download_count\"'"
+abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_bluetooth_controller/releases | egrep 'download_count'  | cut '-d:' -f 2 | sed 's/,/+/' | xargs echo | xargs -I N echo N 0  | bc"
 
 # Basic functions abbreviations
 abbr -a -g ls ls -GFho
 abbr -a -g rm rm -iv
 abbr -a -g mv mv -vi
-abbr -a -g cp cp -v
+abbr -a -g cp cp -vnr
 abbr -a -g tgz tar -czvf
 abbr -a -g utgz tar -xzvf
 
 # Other abbreviations
 abbr -a -g efish nvim $__fish_config_dir/config.fish
 abbr -a -g sfish source $__fish_config_dir/config.fish
+abbr -a -g sabbr "python3 $__fish_config_dir/conf.d/_les_metadata.py; source $__fish_config_dir/conf.d/file_abbr.fish"
 abbr -a -g vim nvim
+abbr -a -g evim nvim ~/.vimrc
 
 # Mount samba samfundet/ku
-function mountmeg
-   save
-   echo 
-   command mount_smbfs //vegalan@samba.samfundet.no/ku ~/networkshare
+## TODO: lage tmp networkshare og slett etterpå (sjekk om eksisterer først)
+function mku
+   mount_smbfs //vegalan@samba.samfundet.no/ku ~/networkshare 
    set_color yellow
-   printf "Connected to samba.samfundet.no/ku"
-   echo 
+   printf "Successfully connected to samba.samfundet.no/ku\n"
    cd ~/networkshare
    printf "Changed directory to ~/networkshare"
 end
 
-function umountku
-   if fish_tmp_save_dir == "~/networkshare"
-      command cd
-   else
-      back
+function um
+   if test $PWD = "/Users/vegardlandsverk/networkshare"
+      cd
+      printf "Changed directory to ~\n"
    end
-   command umount ~/networkshare
+   umount ~/networkshare 
+   set_color yellow
+   printf "Successfully disconnected from samba.samfundet.no"
 end
 
-# NTNU abbreviations
-abbr it cd ~/Documents/Studier/NTNU/2019\\ høst/IT2805
-abbr itp cd ~/Documents/Studier/NTNU/2019\\ høst/IT2805/Gruppeprosjekt/vegardinho.github.io
-abbr tfe cd ~/Documents/Studier/NTNU/2019\\ høst/TFE4101
-abbr tma cd ~/Documents/Studier/NTNU/2019\\ høst/TMA4100
-abbr ttt cd ~/Documents/Studier/NTNU/2019\\ høst/TTT4255
-abbr ttp cd ~/Documents/Studier/NTNU/2019\\ høst/TTT4255/Innovasjonsprosjekt/curlingprosjekt
+function mkw
+   mount_smbfs //vegalan@samba.samfundet.no/ku-web ~/networkshare 
+   set_color yellow
+   printf "Successfully connected to samba.samfundet.no/ku\n"
+   cd ~/networkshare
+   printf "Changed directory to ~/networkshare"
+end
 
 # Destinations
 abbr -a -g fish_dir $__fish_config_dir
 abbr -a -g fish_conf code $__fish_config_dir/config.fish
-abbr -a -g desk $HOME/Desktop/
-abbr -a -g home cd
-abbr -a -g reddit tuir
 
 # Quick directory jump
 function save
     set -U fish_tmp_save_dir $PWD
     set_color yellow
-    printf "Saved directory pointer at " 
-    printf $PWD
+    printf "Saved directory pointer" 
     set_color normal
 end
 
@@ -234,58 +240,5 @@ function mypy
             echo "Script not found."
             set_color normal
         end
-    end
-end
-
-# ==================== #
-#      Utilities       #
-# ==================== #
-
-# ==================== #
-#  Applications (Mac)  #
-# ==================== #
-
-# VS Code
-function code 
-    if count $argv > /dev/null
-        open $argv -a "/Applications/Visual Studio Code.app" 
-    else
-        open . -a "/Applications/Visual Studio Code.app"
-    end
-end
-
-# PyCharm
-function pycharm 
-    if count $argv > /dev/null
-        open $argv -a "/Applications/PyCharm CE.app" 
-    else
-        open . -a "/Applications/PyCharm CE.app"
-    end
-end
-
-# RubyMine
-function rubymine 
-    if count $argv > /dev/null
-        open $argv -a "/Applications/RubyMine.app" 
-    else
-        open . -a "/Applications/RubyMine.app"
-    end
-end
-
-# CLion
-function clion 
-    if count $argv > /dev/null
-        open $argv -a "/Applications/CLion.app" 
-    else
-        open . -a "/Applications/CLion.app"
-    end
-end
-
-# Love2D
-function love
- if count $argv > /dev/null
-        open $argv -a "/Applications/love.app" 
-    else
-        open . -a "/Applications/love.app"
     end
 end

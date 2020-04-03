@@ -1,6 +1,4 @@
 /*
 !.gitignore
-!config.fish
-!*file_abbr.fish
-!mypy
-
+!mypy/*
+fish_variables
