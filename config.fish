@@ -51,7 +51,7 @@ abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_b
 abbr -a -g ls ls -GFhotr
 abbr -a -g lsa ls -GFhotra
 abbr -a -g lsh "ls -GFhotrd \.?*"
-abbr -a -g rm rm -iv
+abbr -a -g rm rm -ivr
 abbr -a -g mv mv -vi
 abbr -a -g cp cp -vnr
 abbr -a -g tgz tar -czvf
@@ -67,30 +67,42 @@ abbr -a -g sact source bin/activate.fish
 
 # Mount samba samfundet/ku
 ## TODO: lage tmp networkshare og slett etterpå (sjekk om eksisterer først)
-function mku
-   mount_smbfs //vegalan@samba.samfundet.no/ku ~/networkshare 
+function mku $argv
+   set chd false
+   set path ""
+   set_color red
+   
+   if test $argv && test $argv = w
+   	set path //vegalan@samba.samfundet.no/ku
+   else
+	set path //vegalan@samba.samfundet.no/ku-web
+   end
+   mount_smbfs $path ~/networkshare 
+   set ret_val $status
+
    set_color yellow
-   printf "Successfully connected to samba.samfundet.no/ku\n"
-   cd ~/networkshare
-   printf "Changed directory to ~/networkshare"
+   if test $ret_val = 0
+	printf "Successfully connected to %s.\n" $path 
+	set chd true
+   else if test $ret_val = 64
+	set chd true
+	printf "Already connected.\n"
+   end
+
+   if test $chd = true
+	cd ~/networkshare
+	printf "Changing directory to ~/networkshare"
+   end
 end
 
 function um
+   set_color yellow
    if test $PWD = "/Users/vegardlandsverk/networkshare"
       cd
       printf "Changed directory to ~\n"
    end
    umount ~/networkshare 
-   set_color yellow
    printf "Successfully disconnected from samba.samfundet.no"
-end
-
-function mkw
-   mount_smbfs //vegalan@samba.samfundet.no/ku-web ~/networkshare 
-   set_color yellow
-   printf "Successfully connected to samba.samfundet.no/ku\n"
-   cd ~/networkshare
-   printf "Changed directory to ~/networkshare"
 end
 
 # Destinations
@@ -103,17 +115,6 @@ function save
     set_color yellow
     printf "Saved directory pointer" 
     set_color normal
-end
-
-function save2
-    set -U fish_tmp_save_dir2 $PWD
-    set_color yellow
-    printf "Saved"
-    set_color normal
-end
-
-function back2
-    cd $fish_tmp_save_dir2
 end
 
 function back
@@ -249,3 +250,6 @@ end
 
 
 set theme_color_scheme gruvbox
+
+#BobTheFish settings
+set -g theme_date_timezone Europe/Oslo
