@@ -1,20 +1,10 @@
-# Greeting
-function fish_greeting 
-   printf "\033c"
-end
-
-# Real clear
-function new
-    source $__fish_config_dir/config.fish
-    fish_greeting
-end
-
-# Autocomplete test
-# complete -c myprog -a "~/Documents/Progging"
-# complete -c myprog -a "yes no"
-
-# Fix for å kunne kopiere utf-8-tegn (tidligere export LC_ALL=en_US.UTF-8 i bash_profile)
+# Fix for copying utf-8 chars (export LC_ALL=en_US.UTF-8 in bash_profile)
 set -gx LC_ALL en_US.UTF-8
+
+set theme_color_scheme gruvbox
+
+#BobTheFish settings
+set -g theme_date_timezone Europe/Oslo
 
 # Quick tmp
 function tmp
@@ -66,43 +56,43 @@ abbr -a -g evim nvim ~/.vimrc
 abbr -a -g sact source bin/activate.fish
 
 # Mount samba samfundet/ku
-## TODO: lage tmp networkshare og slett etterpå (sjekk om eksisterer først)
+## TODO: make tmp folder instead (sjekk om eksisterer først)
 function mku $argv
-   set chd false
-   set path ""
-   set_color red
+    set chd false
+    set path ""
+    set_color red
    
-   if test $argv && test $argv = w
-   	set path //vegalan@samba.samfundet.no/ku
-   else
-	set path //vegalan@samba.samfundet.no/ku-web
-   end
-   mount_smbfs $path ~/networkshare 
-   set ret_val $status
+    if test $argv && test $argv = w
+        set path //vegalan@samba.samfundet.no/ku
+    else
+        set path //vegalan@samba.samfundet.no/ku-web
+    end
+       mount_smbfs $path ~/networkshare 
+    set ret_val $status
 
-   set_color yellow
-   if test $ret_val = 0
-	printf "Successfully connected to %s.\n" $path 
-	set chd true
-   else if test $ret_val = 64
-	set chd true
-	printf "Already connected.\n"
-   end
+    set_color yellow
+    if test $ret_val = 0
+    	printf "Successfully connected to %s.\n" $path 
+    	set chd true
+    else if test $ret_val = 64
+	    set chd true
+	    printf "Already connected.\n"
+    end
 
-   if test $chd = true
-	cd ~/networkshare
-	printf "Changing directory to ~/networkshare"
-   end
+    if test $chd = true
+	    cd ~/networkshare
+        printf "Changing directory to ~/networkshare"
+    end
 end
 
 function um
-   set_color yellow
-   if test $PWD = "/Users/vegardlandsverk/networkshare"
-      cd
-      printf "Changed directory to ~\n"
-   end
-   umount ~/networkshare 
-   printf "Successfully disconnected from samba.samfundet.no"
+    set_color yellow
+    if test $PWD = "/Users/vegardlandsverk/networkshare"
+        cd
+        printf "Changed directory to ~\n"
+    end
+    umount ~/networkshare 
+    printf "Successfully disconnected from samba.samfundet.no"
 end
 
 # Destinations
@@ -126,130 +116,3 @@ abbr -a -g py python3
 abbr -a -g pip pip3
 abbr -a -g py2 python
 abbr -a -g pip2 pip
-
-# Python scripts manager
-function mypy 
-    if test (count $argv) = 0 || test $argv[1] = "-l"
-        if test -e $__fish_config_dir/mypy/".list.py"
-            python3 $__fish_config_dir/mypy/".list.py"
-        else
-            set_color green
-            echo '-------------------------'
-            set_color red
-            ls $__fish_config_dir/mypy
-            set_color green
-            echo '-------------------------'
-            set_color normal
-        end
-    else if test $argv[1] = "-h"
-        set_color green
-        echo "  Usage"
-        set_color yellow
-        echo '  run     mypy <name>'
-        echo '  add     mypy -a <file>'
-        echo '  new     mypy -n <name>'
-        echo '  edit    mypy -e <name>'
-        echo '  rename  mypy -r <name> <new_name>'
-        echo '  open    mypy -o'
-        echo '  list    mypy -l'
-        set_color normal
-    else if test $argv[1] = "-e"
-        if test (count $argv) = 2
-            if test -e $__fish_config_dir/mypy/$argv[2]".py"
-                code $__fish_config_dir/mypy/$argv[2]".py"
-                set_color green
-                echo "Script opened in code."
-                set_color normal
-            else
-                set_color red
-                echo "File not found."
-                set_color normal
-            end
-        else
-            set_color yellow
-            echo "Usage: mypy -e <name>"
-            set_color normal
-        end
-    else if test $argv[1] = "-a"
-        if test (count $argv) = 2
-            if test -e $argv[2]
-                if test -e $__fish_config_dir/mypy/$argv[2]
-                    set_color red
-                    echo "Name already in use."
-                    set_color normal
-                else
-                    cp $argv[2] $__fish_config_dir/mypy/
-                    set_color green
-                    echo "Script added to mypys."
-                    set_color normal
-                end
-            else
-                set_color red
-                echo "File not found."
-                set_color normal
-            end
-        else
-            set_color yellow
-            echo "Usage: mypy -a <file>"
-            set_color normal
-        end
-    else if test $argv[1] = "-n"
-        if test (count $argv) = 2
-            if test -e $__fish_config_dir/mypy/$argv[2]".py"
-                set_color red
-                echo "Name already exists."
-                set_color normal
-            else
-                touch $__fish_config_dir/mypy/$argv[2]".py"
-                set_color green
-                echo "Created new mypy script."
-                set_color normal
-                code $__fish_config_dir/mypy/$argv[2]".py"
-            end
-        else
-            set_color yellow
-            echo "Usage: mypy -n <name>"
-            set_color normal
-        end
-    else if test $argv[1] = "-r"
-        if test (count $argv) = 3
-            if test -e $__fish_config_dir/mypy/$argv[2]".py"
-                if test -e $__fish_config_dir/mypy/$argv[3]".py"
-                    set_color red
-                    echo "Name already exists."
-                    set_color normal
-                else
-                    mv $__fish_config_dir/mypy/$argv[2]".py" $__fish_config_dir/mypy/$argv[3]".py"
-                    set_color green
-                    echo "Renamed script."
-                    set_color normal
-                end
-            else
-                set_color red
-                echo "Script not found."
-                set_color normal
-            end
-        else
-            set_color yellow
-            echo "Usage: mypy -r <name> <new_name>"
-            set_color normal
-        end
-    else if test $argv[1] = "-o"
-        open $__fish_config_dir/mypy/
-    else
-        if test -e $__fish_config_dir/mypy/$argv[1]".py"
-            python3 $__fish_config_dir/mypy/$argv[1]".py" $argv[2..-1]
-        else
-            set_color red
-            echo "Script not found."
-            set_color normal
-        end
-    end
-end
-
-
-
-set theme_color_scheme gruvbox
-
-#BobTheFish settings
-set -g theme_date_timezone Europe/Oslo
