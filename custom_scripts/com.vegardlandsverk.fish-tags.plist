@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "">
+<plist version="1.0">
+	<dict>
+		<key>Label</key>
+		<string>com.vegardlandsverk.fish-tags</string>
+		<key>ProgramArguments</key>
+		<array><string>/Users/vegardlandsverk/.config/fish/custom_scripts/_les_metadata.py</string></array>
+
+		<key>RunAtLoad</key>
+		<true/>
+
+		<key>StandardOutPath</key>
+		<string>/Users/vegardlandsverk/.config/fish/custom_scripts/logs/fish-tags.log</string>
+		<key>StandardErrorPath</key>
+		<string>/Users/vegardlandsverk/.config/fish/custom_scripts/logs/fish-tags.err</string>
+
+	</dict>
+</plist>
