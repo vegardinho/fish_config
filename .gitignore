@@ -1,0 +1,8 @@
+fish_variables
+file_abbr.fish
+*.copy
+install
+*fish_prompt.fish
+*omf.fish
+*.log
+*.err
