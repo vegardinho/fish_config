@@ -45,12 +45,14 @@ abbr -a -g git_dow "curl -s https://api.github.com/repos/vegardinho/alfred_bluet
 abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_bluetooth_controller/releases | egrep 'download_count'  | cut '-d:' -f 2 | sed 's/,/+/' | xargs echo | xargs -I N echo N 0  | bc"
 
 # Basic functions abbreviations
-abbr -a -g ls ls -GFhotr
-abbr -a -g lsa ls -GFhotra
+abbr -a -g ls ls -GFho
+abbr -a -g lst ls -GFhort
+abbr -a -g lsa ls -GFhoa
 abbr -a -g lsh "ls -GFhod \.?*" #Show all hidden files, hide folders
 abbr -a -g rm rm -ivr
 abbr -a -g mv mv -vi
 abbr -a -g cp cp -vnr
+abbr -a -g tree tree --filelimit 30
 abbr -a -g tgz tar -czvf
 abbr -a -g utgz tar -xzvf
 
@@ -59,8 +61,11 @@ abbr -a -g efish subl $__fish_config_dir/config.fish
 abbr -a -g sfish source $__fish_config_dir/config.fish
 abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/file_abbr.fish"
 abbr -a -g vim nvim
-abbr -a -g evim nvim ~/.vimrc
+abbr -a -g evim nvim ~/.vim/vimrc
 abbr -a -g sact source bin/activate.fish
+
+# Hardcoded shortcuts
+abbr -a -g xampp 'cd /Users/vegardlandsverk/.bitnami/stackman/machines/xampp/volumes/root/htdocs'
 
 # Open file with application
 function phpstorm $argv
@@ -75,9 +80,6 @@ function code $argv
     open "./$argv" -a "Visual Studio Code"
 end
 
-function finder $argv
-    open "./$argv" -a "Finder"
-end
 
 function fish_tags $argv
     set ret_val (python3 /Users/vegardlandsverk/.config/fish/custom_scripts/add_tag.py $PWD $argv)
