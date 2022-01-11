@@ -10,20 +10,22 @@ def find_meta_tags(directory, skip_dirs, abbr_file):
     print("\nLaster tags-metadata fra mapper...\n")
 
     for root, dirs, files in os.walk(directory):
-        print(root)
-        print(skip_dirs)
         if (not ".fish_tags" in files) or (root in skip_dirs):
             continue
 
-        meta_file = open(root + "/.fish_tags", "r")
-        words = meta_file.readline().split()
-        print("{} – {}".format(words, root))
+        f_name = root + "/.fish_tags"
+        os.remove(f_name)
+        print("Removed: " + f_name)
 
-        for word in words:
-            abbr_file.write("\nabbr -a -g {} \"{}\"".format(word, 
-                root.replace(" ", "\ ")))
+        # meta_file = open(root + "/.fish_tags", "r")
+        # words = meta_file.readline().split()
+        # print("{} – {}".format(words, root))
 
-        meta_file.close()
+        # for word in words:
+        #     abbr_file.write("\nabbr -a -g {} \"{}\"".format(word, 
+        #         root.replace(" ", "\\ ")))
+
+        #meta_file.close()
 
 
 def main():
@@ -35,7 +37,7 @@ def main():
         file_mode = 'w'
         start_dir = "/Users/vegardlandsverk/"
 
-    abbr_file = open("/Users/vegardlandsverk/.config/fish/conf.d/file_abbr.fish", file_mode)
+    abbr_file = open("/Users/vegardlandsverk/.config/fish/conf.d/dynamic_abbr.fish", file_mode)
     find_meta_tags(start_dir, skip_dirs, abbr_file)
 
     abbr_file.close()

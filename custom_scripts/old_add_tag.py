@@ -1,7 +1,7 @@
 import sys
 
 def main():
-	root = sys.argv[1].replace(" ", "\ ")
+	root = sys.argv[1].replace(" ", "\\ ")
 	tags = sys.argv[2:]
 
 	if len(sys.argv[2:]) == 0:

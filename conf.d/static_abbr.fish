@@ -37,13 +37,10 @@ abbr -a -g utgz tar -xzvf
 # Other abbreviations
 abbr -a -g efish subl $__fish_config_dir/config.fish
 abbr -a -g sfish source $__fish_config_dir/config.fish
-abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/file_abbr.fish"
+abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/dynamic_abbr.fish"
 abbr -a -g vim nvim
 abbr -a -g evim nvim ~/.vim/vimrc
 abbr -a -g sact source bin/activate.fish
-
-# Hardcoded shortcuts
-abbr -a -g xampp 'cd /Users/vegardlandsverk/.bitnami/stackman/machines/xampp/volumes/root/htdocs'
 
 # Destinations
 abbr -a -g fish_dir $__fish_config_dir
