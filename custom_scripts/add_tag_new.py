@@ -16,7 +16,7 @@ def main():
 
     delete = True if (tags[0] in ['d', 'delete']) else False
 
-    f = open("/Users/vegardlandsverk/.config/fish/conf.d/dynamic_abbr.fish", "r+")
+    f = open("$__fish_config_dir/conf.d/dynamic_abbr.fish", "r+")
     text = f.read()
 
     if delete:
