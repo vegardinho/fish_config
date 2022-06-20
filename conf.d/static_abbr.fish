@@ -36,11 +36,11 @@ abbr -a -g utgz tar -xzvf
 
 # Other abbreviations
 abbr -a -g efish subl $__fish_config_dir/config.fish
-abbr -a -g sfish source $__fish_config_dir/config.fish
+abbr -a -g sfish 'source $__fish_config_dir/config.fish; source $__fish_config_dir/conf.d/static_abbr.fish'
 abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/dynamic_abbr.fish"
 abbr -a -g vim nvim
 abbr -a -g evim nvim ~/.vim/vimrc
-abbr -a -g sact source bin/activate.fish
+abbr -a -g sact source venv/bin/activate.fish
 
 # Destinations
 abbr -a -g fish_dir $__fish_config_dir

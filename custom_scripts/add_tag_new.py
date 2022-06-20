@@ -31,8 +31,11 @@ def main():
             if match:
                 text = text.replace(match.group(), "\"{}\"".format(root)) 
             else:
-                # Ensure line break before and after new line
-                line_end = '' if (text[-1] == '\n') else '\n'
+                line_end = '\n'
+                if text != '':
+                    if (text[-1] == '\n'):
+                        line_end = ''
+                    # Ensure line break before and after new line
                 text += "{}abbr -a -g {} \"{}\"\n".format(line_end, tag, root)
 
     f.seek(0)
@@ -45,6 +48,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
