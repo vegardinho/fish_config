@@ -2,6 +2,7 @@
 
 import re
 import sys
+import os
 
 def main():
     exit_code = 0
@@ -16,7 +17,7 @@ def main():
 
     delete = True if (tags[0] in ['d', 'delete']) else False
 
-    f = open("$__fish_config_dir/conf.d/dynamic_abbr.fish", "r+")
+    f = open(f"{os.environ['FISH_DIR']}/conf.d/dynamic_abbr.fish", "r+")
     text = f.read()
 
     if delete:
