@@ -6,6 +6,8 @@ set -gx PATH "/usr/local/sbin:$PATH"
 set -gx PATH "$PATH:/home/pi/.config/fish/config.fish"
 set -gx PATH "$PATH:/home/pi/.local/bin"
 set -gx PYTHON_TOOLS ~/Documents/python-tools
+#set -gx PYTHONPATH "~/Documents/python-tools:$PYTHONPATH"
+
 
 #Set color theme
 set theme_color_scheme gruvbox
