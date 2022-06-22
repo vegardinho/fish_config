@@ -3,7 +3,8 @@ set -gx LC_ALL en_US.UTF-8
 
 #Export options
 set -gx PATH "/usr/local/sbin:$PATH"
-set -gx PYTHON_TOOLS ~/Documents/Progging/python-tools
+set -Ux PYTHONPATH ~/Documents/Progging/python-tools:$PYTHONPATH
+#set -Ux PYTHON_TOOLS ~/Documents/Progging/python-tools -- Not used, as pythonpath works now
 
 #Set color theme
 set theme_color_scheme gruvbox
