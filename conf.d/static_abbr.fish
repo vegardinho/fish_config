@@ -2,6 +2,9 @@
 abbr -a -g py python3
 abbr -a -g py2 python
 
+# ssh
+#abbr -a -g ssh ~/bin/ssh-ident
+
 # Git abbreviations
 abbr -a -g g git
 abbr -a -g ga git add
