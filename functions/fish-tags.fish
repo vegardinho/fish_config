@@ -4,12 +4,12 @@ function fish-tags $argv
     set ret_val $status
 
     if [ $ret_val -eq 50 ]
-        set_color red
-        echo "Successfully deleted tags for directory "(set_color yellow)"\""$PWD"\""(set_color yellow)"."
+        set_color yellow
+        echo "Successfully deleted tags "(set_color green)(cat $TMPDIR/fish_tags.txt)(set_color yellow)" for directory "(set_color green)"\""$PWD"\""(set_color yellow)"."
         return
     else if [ $ret_val -eq 20 ]
         # Get list of tags from tmp file (stored by python script)
-        echo (set_color yellow)"Fish tags "(set_color green)(cat /tmp/fish_tags_current.txt)(set_color yellow)" stored for directory"\
+        echo (set_color yellow)"Fish tags "(set_color green)(cat $TMPDIR/fish_tags.txt)(set_color yellow)" stored for directory"\
             (set_color green)""$PWD""(set_color yellow)
         set_color green
     else if [ $ret_val -eq 10 ]
@@ -22,7 +22,7 @@ function fish-tags $argv
     else if [ $ret_val -eq 0 ]
         source $__fish_config_dir/conf.d/dynamic_abbr.fish
         set_color yellow
-        echo "Successfully added tag(s) " (set_color green)"\""$argv"\"" (set_color yellow)for folder (set_color green)$PWD
+        echo "Successfully added tag(s) "(set_color green)(cat $TMPDIR/fish_tags.txt) (set_color yellow)for folder (set_color green)$PWD
         return
     else
         set_color red
