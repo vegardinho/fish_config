@@ -1,6 +1,7 @@
 # Python
 abbr -a -g py python3
 abbr -a -g py2 python
+abbr -a -g piprun pipenv run python
 
 # ssh
 #abbr -a -g ssh ~/bin/ssh-ident
@@ -39,6 +40,7 @@ abbr -a -g utgz tar -xzvf
 
 # Other abbreviations
 abbr -a -g efish nvim $__fish_config_dir/config.fish
+abbr -a -g estat 'nvim $__fish_config_dir/conf.d/static_abbr.fish'
 abbr -a -g sfish 'source $__fish_config_dir/config.fish; source $__fish_config_dir/conf.d/static_abbr.fish'
 abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/dynamic_abbr.fish"
 abbr -a -g vim nvim

@@ -10,3 +10,7 @@ end
 function code $argv
     open "./$argv" -a "Visual Studio Code"
 end
+
+function intellij $argv
+    open "./$argv" -a "IntelliJ IDEA"
+end
