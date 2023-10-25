@@ -57,7 +57,7 @@ def main():
         output = ['No tags stored'] if len(groups) == 0 else groups
 
         # Write list of tags to tmp file
-        path = os.path.join(os.environ['TMPDIR'], "fish_tags_current.txt")
+        path = os.path.join('/tmp', "fish_tags_current.txt")
         with open(path, 'w') as fp:
             fp.write(', '.join(output))
         exit_code = 20
