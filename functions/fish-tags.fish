@@ -9,9 +9,9 @@ function fish-tags $argv
         return
     else if [ $ret_val -eq 20 ]
         # Get list of tags from tmp file (stored by python script)
-        echo (set_color yellow)"Fish tags "(set_color green)(cat $TMPDIR/fish_tags.txt)(set_color yellow)" stored for directory"\
-            (set_color green)""$PWD""(set_color yellow)
-        set_color green
+        echo (set_color yellow)"Fish tags stored for directory"\
+        (set_color green)""$PWD""(set_color yellow)":"\n\
+        (set_color green)(cat $TMPDIR/fish_tags.txt)
     else if [ $ret_val -eq 10 ]
         echo (set_color red)"Valid use:"(set_color yellow)\n\
         "fish-tags [options]"\n\n\
