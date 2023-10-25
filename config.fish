@@ -3,6 +3,7 @@ set -gx LC_ALL en_US.UTF-8
 
 #Export options
 set -gx PATH "/usr/local/sbin:$PATH"
+# set -Uxa PYTHONPATH ~/Documents/Progging/python-tools/ #Kan ikke være i fnatter
 set -Uxa PYTHONPATH ~/Documents/Progging/python-tools/ #Kan ikke være i fnatter
 #set -Ux PYTHON_TOOLS ~/Documents/Progging/python-tools -- Not used, as pythonpath works now
 

@@ -1,6 +1,7 @@
 # Python
 abbr -a -g py python3
 abbr -a -g py2 python
+abbr -a -g piprun pipenv run python
 
 # Git abbreviations
 abbr -a -g g git
