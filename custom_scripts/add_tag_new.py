@@ -54,7 +54,7 @@ def main():
         # TODO: list what is deleted
     elif mode in ['-l', '-list']:
         groups = re.findall(rf'(?<=\s)\S+(?=\s"{re.escape(root)})', text)
-        output = ['None'] if len(groups) == 0 else groups
+        output = ['[None]'] if len(groups) == 0 else groups
 
         # Write list of tags to tmp file
         path = os.path.join('/tmp', "fish_tags_current.txt")
