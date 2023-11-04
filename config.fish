@@ -3,15 +3,8 @@ set -gx LC_ALL en_US.UTF-8
 
 #Export options
 set -gx PATH "/usr/local/sbin:$PATH"
-set -gx PATH "$PATH:/home/pi/.config/fish/config.fish"
-set -gx PATH "$PATH:/home/pi/.local/bin"
-#set -gx PYTHON_TOOLS ~/Documents/python-tools -- Not used, replaced by pythonpath
-set -Uxa PYTHONPATH ~/Documents/python-tools/
-
-#Let keychain manage ssh-agent for following accounts
-if status --is-interactive
-    keychain --eval --agents ssh --quiet -Q github_raspberry | source
-end
+#Not working in IntelliJ, even when shows up in IntelliJ PYHTONPATH. Currently added to classpath for used interpreter
+set -gxa --path PYTHONPATH ~/Documents/python-tools/ 
 
 #Set color theme
 set theme_color_scheme gruvbox
@@ -21,10 +14,6 @@ set -g theme_date_timezone Europe/Oslo
 
 #For python scripts requirering this variable 
 set -Ux FISH_DIR $__fish_config_dir
-
-#Start fish ssh agent
-fish_ssh_agent
-
 
 ## SEE conf.d FOLDER FOR OTHER AUTO-LOADED CONFIGS, ##
 ## AND functions FOLDER FOR FUNCTIONS ##

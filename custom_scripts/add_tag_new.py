@@ -60,7 +60,7 @@ def main():
         exit_code = 50
         # TODO: list what is deleted
     elif mode in ['-l', '-list']:
-        groups = re.findall(rf'(?<=\s)\S+(?=\s"{re.escape(root)})', text)
+        groups = re.findall(rf'(?<=\s)\S+(?=\s"{re.escape(root)}")', text)
         output = ['[None]'] if len(groups) == 0 else ['\n'.join(groups)]
 
         exit_code = 20

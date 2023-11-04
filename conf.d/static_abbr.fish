@@ -31,6 +31,7 @@ abbr -a -g ls ls -GFho
 abbr -a -g lst ls -GFhort
 abbr -a -g lsa ls -GFhoa
 abbr -a -g lsh "ls -GFhod \.?*" #Show all hidden files, hide folders
+abbr -a -g less less -S
 abbr -a -g rm rm -ivr
 abbr -a -g mv mv -vi
 abbr -a -g cp cp -vnr
@@ -48,5 +49,5 @@ abbr -a -g evim nvim ~/.vim/vimrc
 abbr -a -g sact source venv/bin/activate.fish
 
 # Destinations
-abbr -a -g fish_dir $__fish_config_dir
-abbr -a -g fish_conf code $__fish_config_dir/config.fish
+abbr -a -g fish-dir $__fish_config_dir
+abbr -a -g fish-conf code $__fish_config_dir/config.fish

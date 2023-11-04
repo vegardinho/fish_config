@@ -12,5 +12,5 @@ function code $argv
 end
 
 function intellij $argv
-    open "./$argv" -a "IntelliJ IDEA"
+    open "./$argv" -a "IntelliJ IDEA Ultimate"
 end
