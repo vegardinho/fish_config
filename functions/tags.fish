@@ -1,5 +1,5 @@
 #Add fish tag to dynamic abbreviation file
-function fish-tags $argv
+function tags $argv
     set print_val (python3 $__fish_config_dir/custom_scripts/add_tag_new.py $PWD $argv)
     set ret_val $status
 
@@ -14,7 +14,7 @@ function fish-tags $argv
         (set_color green)(cat $TMPDIR/fish_tags.txt)
     else if [ $ret_val -eq 10 ]
         echo (set_color red)"Valid use:"(set_color yellow)\n\
-        "fish-tags [options]"\n\n\
+        "tags [options]"\n\n\
         "-a -add"\t"TAGS"\t\t"adds specified tags"\n\
         "-d -delete"\t"TAGS"\t\t"deletes specified tags"\n\
         \t\t"--all"\t\t"deletes all tags"\n\

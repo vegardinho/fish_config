@@ -45,6 +45,8 @@ def main():
         # Delete all occurences of directory
         tag_hit = ''
         output = tags
+        if (len(tags) == 0):
+            sys.exit(10)
         if tags[-1][0] == '-':
             if tags[-1] != '--all':
                 sys.exit(10)
