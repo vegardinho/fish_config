@@ -7,6 +7,7 @@ set -gx PATH "$PATH:/home/pi/.config/fish/config.fish"
 set -gx PATH "$PATH:/home/pi/.local/bin"
 #set -gx PYTHON_TOOLS ~/Documents/python-tools -- Not used, replaced by pythonpath
 set -Uxa PYTHONPATH ~/Documents/python-tools/
+set -gx TMPDIR /tmp
 
 #Let keychain manage ssh-agent for following accounts
 if status --is-interactive
