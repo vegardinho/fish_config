@@ -45,6 +45,8 @@ def main():
         # Delete all occurences of directory
         tag_hit = ''
         output = tags
+        if (len(tags) == 0):
+            sys.exit(10)
         if tags[-1][0] == '-':
             if tags[-1] != '--all':
                 sys.exit(10)
@@ -60,8 +62,8 @@ def main():
         exit_code = 50
         # TODO: list what is deleted
     elif mode in ['-l', '-list']:
-        groups = re.findall(rf'(?<=\s)\S+(?=\s"{re.escape(root)})', text)
-        output = ['[None]'] if len(groups) == 0 else groups
+        groups = re.findall(rf'(?<=\s)\S+(?=\s"{re.escape(root)}")', text)
+        output = ['[None]'] if len(groups) == 0 else ['\n'.join(groups)]
 
         exit_code = 20
     else:
@@ -69,7 +71,7 @@ def main():
         sys.exit(10)
 
     # Write list of tags to tmp file
-    path = os.path.join('/tmp', "fish_tags.txt")
+    path = os.path.join(os.environ["TMPDIR"], "fish_tags.txt")
     with open(path, 'w') as fp:
         output = output[0] if len(tags) == 1 else ' '.join(output)
         fp.write(output)
