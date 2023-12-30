@@ -3,6 +3,7 @@ set -gx LC_ALL en_US.UTF-8
 
 #Export options
 set -gx PATH "/usr/local/sbin:$PATH"
+#set -gx PATH "$PATH:/Users/vegardlandsverk/Library/Python/3.11/bin"
 #Not working in IntelliJ, even when shows up in IntelliJ PYHTONPATH. Currently added to classpath for used interpreter
 set -gxa --path PYTHONPATH ~/Documents/python-tools/ 
 

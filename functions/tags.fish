@@ -21,8 +21,9 @@ function tags $argv
         "-l -list"\t\t\t"lists all tags for current directory"
     else if [ $ret_val -eq 0 ]
         source $__fish_config_dir/conf.d/dynamic_abbr.fish
-        set_color yellow
-        echo "Successfully added tag(s) "(set_color green)(cat $TMPDIR/fish_tags.txt) (set_color yellow)for folder (set_color green)$PWD
+        echo (set_color yellow)"Successfully added tag(s) for"\
+        (set_color green)""$PWD""(set_color yellow)":"\n\
+        (set_color green)(cat $TMPDIR/fish_tags.txt)
         return
     else
         set_color red

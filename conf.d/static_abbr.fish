@@ -28,8 +28,8 @@ abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_b
 
 # Basic functions abbreviations
 abbr -a -g ls ls -GFho
-abbr -a -g lst ls -GFhort
-abbr -a -g lsa ls -GFhoa
+abbr -a -g lst ls -GFhort #List based on date, in reversed order
+abbr -a -g lsa ls -GFhoa #Show all
 abbr -a -g lsh "ls -GFhod \.?*" #Show all hidden files, hide folders
 abbr -a -g less less -S
 abbr -a -g rm rm -ivr
