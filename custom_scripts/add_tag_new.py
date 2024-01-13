@@ -3,6 +3,7 @@
 import re
 import sys
 import os
+from pathlib import Path
 
 def main():
     exit_code = 0
@@ -20,7 +21,10 @@ def main():
     if sys.argv[2][0] != '-':
         sys.exit(10)
 
-    f = open(f"{os.environ['FISH_DIR']}/conf.d/dynamic_abbr.fish", "r+")
+
+    file_path = f"{os.environ['FISH_DIR']}/conf.d/dynamic_abbr.fish"
+    Path(file_path).touch(exist_ok=True) #Create file if not exists
+    f = open(file_path, "r+")
     text = f.read()
 
     if mode in ['-a', '-add']:
