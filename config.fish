@@ -9,11 +9,6 @@ set -gx PATH "$PATH:/home/pi/.local/bin"
 set -Uxa PYTHONPATH ~/Documents/python-tools/
 set -gx TMPDIR /tmp
 
-#Let keychain manage ssh-agent for following accounts
-if status --is-interactive
-    keychain --eval --agents ssh --quiet -Q github_raspberry | source
-end
-
 #Set color theme
 set theme_color_scheme gruvbox
 
