@@ -7,3 +7,4 @@ install
 *.log
 *.err
 __pycache__/
+config_private.fish
