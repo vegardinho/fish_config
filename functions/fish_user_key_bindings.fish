@@ -1,3 +1,2 @@
-bind \t forward-char
-bind \cn forward-word
+bind \t forward-word
 bind \cf complete

@@ -4,13 +4,17 @@ function phpstorm $argv
 end
 
 function pycharm $argv
-    open "./$argv" -a PyCharm
+    open "$argv" -a PyCharm
 end
 
 function code $argv
-    open "./$argv" -a "Visual Studio Code"
+   open "$argv" -a "Visual Studio Code"
+end
+
+function vim $argv
+   nvim "$argv"
 end
 
 function intellij $argv
-    open "./$argv" -a "IntelliJ IDEA Ultimate"
+    open "$argv" -a "IntelliJ IDEA Ultimate"
 end
