@@ -1,5 +1,4 @@
 fish_variables
-dynamic_abbr.fish
 *.copy
 install
 *fish_prompt.fish
@@ -7,3 +6,4 @@ install
 *.log
 *.err
 __pycache__/
+Fish/
