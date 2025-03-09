@@ -16,22 +16,12 @@ set -g theme_date_timezone Europe/Oslo
 #For python scripts requirering this variable 
 set -Ux FISH_DIR $__fish_config_dir
 
-## SEE conf.d FOLDER FOR OTHER AUTO-LOADED CONFIGS, ##
-## AND functions FOLDER FOR FUNCTIONS ##
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/vegardlandsverk/miniconda3/bin/conda
-    eval /Users/vegardlandsverk/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/Users/vegardlandsverk/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/Users/vegardlandsverk/miniconda3/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/Users/vegardlandsverk/miniconda3/bin" $PATH
-    end
-end
-# <<< conda initialize <<<
+# Load pyenv control over python
+pyenv init - fish | source
 
 
 # Created by `pipx` on 2024-08-26 12:07:55
 set PATH $PATH /Users/vegardlandsverk/.local/bin
+
+## SEE conf.d FOLDER FOR OTHER AUTO-LOADED CONFIGS, ##
+## AND functions FOLDER FOR FUNCTIONS ##
