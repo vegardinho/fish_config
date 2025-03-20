@@ -1,9 +1,15 @@
-fish_variables
+#Misc
 *.copy
 install
+
+#Fish files
+fish_variables
 *fish_prompt.fish
-*omf.fish
+Fish/
+
+#Ignore log files
 *.log
 *.err
-__pycache__/
-Fish/
+
+#Ignore Oh My Fish
+*omf.fish
