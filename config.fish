@@ -1,6 +1,9 @@
 #Fix for copying utf-8 chars (export LC_ALL=en_US.UTF-8 in bash_profile)
 set -gx LC_ALL en_US.UTF-8
 
+#Set VIM as keybindings
+set -g fish_key_bindings fish_vi_key_bindings
+
 #Export options
 set -gx PATH "/usr/local/sbin:$PATH"
 #set -gx PATH "$PATH:/Users/vegardlandsverk/Library/Python/3.11/bin"
