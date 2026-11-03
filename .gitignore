@@ -8,3 +8,8 @@ install
 *.err
 __pycache__/
 config_private.fish
+functions/_tide*.fish
+functions/tide.fish
+functions/tide/
+conf.d/_tide_init.fish
+completions/tide.fish
