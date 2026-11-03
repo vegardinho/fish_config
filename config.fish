@@ -2,9 +2,7 @@
 set -gx LC_ALL en_US.UTF-8
 
 #Export options
-set -gx PATH "/usr/local/sbin:$PATH"
-set -gx PATH "$PATH:/home/pi/.config/fish/config.fish"
-set -gx PATH "$PATH:/home/pi/.local/bin"
+set -gx PATH /usr/local/sbin $PATH $HOME/.local/bin
 #set -gx PYTHON_TOOLS ~/Documents/python-tools -- Not used, replaced by pythonpath
 set -Uxa PYTHONPATH ~/Documents/python-tools/
 set -gx TMPDIR /tmp
