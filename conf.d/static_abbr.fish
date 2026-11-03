@@ -30,7 +30,7 @@ abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_b
 abbr -a -g ls ls -GFho
 abbr -a -g lst ls -GFhort
 abbr -a -g lsa ls -GFhoa
-abbr -a -g lsh "ls -GFhod \.?*" #Show all hidden files, hide folders
+abbr -a -g lsd "ls -GFho | grep /" #List directories only
 abbr -a -g rm rm -ivr
 abbr -a -g mv mv -vi
 abbr -a -g cp cp -vnr
@@ -41,11 +41,13 @@ abbr -a -g utgz tar -xzvf
 # Other abbreviations
 abbr -a -g efish nvim $__fish_config_dir/config.fish
 abbr -a -g estat 'nvim $__fish_config_dir/conf.d/static_abbr.fish'
+abbr -a -g eabbr 'nvim $__fish_config_dir/conf.d/static_abbr.fish'
 abbr -a -g sfish 'source $__fish_config_dir/config.fish; source $__fish_config_dir/conf.d/static_abbr.fish'
 abbr -a -g sabbr "python3 $__fish_config_dir/custom_scripts/_les_metadata.py; source $__fish_config_dir/conf.d/dynamic_abbr.fish"
 abbr -a -g vim nvim
 abbr -a -g evim nvim ~/.vim/vimrc
-abbr -a -g sact source venv/bin/activate.fish
+abbr -a -g sact source .venv/bin/activate.fish
+abbr -a -g se sudoedit
 
 # Destinations
 abbr -a -g fish_dir $__fish_config_dir
