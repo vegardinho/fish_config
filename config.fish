@@ -10,9 +10,6 @@ set -gx TMPDIR /tmp
 #Set color theme
 set theme_color_scheme gruvbox
 
-#BobTheFish settings
-set -g theme_date_timezone Europe/Oslo
-
 #For python scripts requirering this variable 
 set -Ux FISH_DIR $__fish_config_dir
 
