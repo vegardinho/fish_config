@@ -13,3 +13,4 @@ functions/tide.fish
 functions/tide/
 conf.d/_tide_init.fish
 completions/tide.fish
+*.bak*
