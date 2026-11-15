@@ -6,6 +6,9 @@ set -gx PATH $HOME/.local/bin /usr/local/sbin $PATH
 #set -Uxa PYTHONPATH ~/Dokumenter/Progging/python-tools/
 set -gx TMPDIR /tmp
 
+# Set sudoedit editor
+set -Ux SUDO_EDITOR nvim
+
 #For python scripts requirering this variable 
 set -Ux FISH_DIR $__fish_config_dir
 
