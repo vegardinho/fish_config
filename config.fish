@@ -21,8 +21,10 @@ fish_ssh_agent
 ## SEE conf.d FOLDER FOR OTHER AUTO-LOADED CONFIGS, ##
 ## AND functions FOLDER FOR FUNCTIONS ##
 
-# Always run shells as tmux sessions, either existing or new
-tmux new-session -A
+# Start tmux if not already running and not root
+if status is-interactive; and test (id -u) -ne 0; and not set -q TMUX
+    tmux new-session -A
+end
 
 # Set starship to manage prompts
 starship init fish | source
