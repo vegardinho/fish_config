@@ -30,7 +30,7 @@ abbr -a -g git_dow_tot "curl -s https://api.github.com/repos/vegardinho/alfred_b
 abbr -a -g ls ls -GFho
 abbr -a -g lst ls -GFhort #List based on date, in reversed order
 abbr -a -g lsa ls -GFhoa #Show all
-abbr -a -g lsh "ls -GFhod \.?*" #Show all hidden files, hide folders
+abbr -a -g lsd "ls -GFho | grep /" #List directories only
 abbr -a -g less less -S
 abbr -a -g rm rm -ivr
 abbr -a -g mv mv -vi
@@ -39,12 +39,16 @@ abbr -a -g tree tree --filelimit 30
 abbr -a -g tgz tar -czvf
 abbr -a -g utgz tar -xzvf
 
-# Other abbreviations
+# Edit files
 abbr -a -g efish code $__fish_config_dir/config.fish
 abbr -a -g estat code $__fish_config_dir/conf.d/static_abbr.fish
 # abbr -a -g sfish 'for f in $__fish_config_dir/conf.d/*; source $f; end' # Source every file in conf.d
 abbr -a -g evim nvim ~/.vim/vimrc
+abbr -a -g essh nvim ~/.ssh/config
+
+# Other abbreviations
 abbr -a -g sact source .venv/bin/activate.fish
+abbr -a -g vim nvim
 
 # Destinations
 abbr -a -g fish-dir $__fish_config_dir

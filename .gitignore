@@ -2,6 +2,9 @@
 *.copy
 install
 
+#Backup files
+*.bak
+
 #Fish files
 fish_variables
 *fish_prompt.fish
