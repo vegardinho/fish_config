@@ -1,5 +1,7 @@
 function fish_user_key_bindings
-    bind tab accept-autosuggestion
-    bind shift-tab forward-path-component
-    bind ctrl-f complete-and-search
+    bind tab forward-word
+    bind shift-tab accept-autosuggestion
+    bind ctrl-f complete
+    bind ctrl-shift-f complete-and-search
 end
+
