@@ -20,7 +20,7 @@ function tags $argv
         \t\t"--all"\t\t"deletes all tags"\n\
         "-l -list"\t\t\t"lists all tags for current directory"
     else if [ $ret_val -eq 0 ]
-        source $__fish_config_dir/conf.d/dynamic_abbr.fish
+        source $__fish_config_dir/conf.d/_dynamic_abbr.fish
         echo (set_color yellow)"Successfully added tag(s) for"\
         (set_color green)""$PWD""(set_color yellow)":"\n\
         (set_color green)(cat $TMPDIR/fish_tags.txt)

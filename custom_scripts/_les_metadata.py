@@ -37,7 +37,7 @@ def main():
         file_mode = 'w'
         start_dir = "/Users/vegardlandsverk/"
 
-    abbr_file = open("/Users/vegardlandsverk/.config/fish/conf.d/dynamic_abbr.fish", file_mode)
+    abbr_file = open("/Users/vegardlandsverk/.config/fish/conf.d/_dynamic_abbr.fish", file_mode)
     find_meta_tags(start_dir, skip_dirs, abbr_file)
 
     abbr_file.close()

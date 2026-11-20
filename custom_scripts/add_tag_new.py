@@ -20,7 +20,7 @@ def main():
     if sys.argv[2][0] != '-':
         sys.exit(10)
 
-    f = open(f"{os.environ['FISH_DIR']}/conf.d/dynamic_abbr.fish", "r+")
+    f = open(f"{os.environ['FISH_DIR']}/conf.d/_dynamic_abbr.fish", "r+")
     text = f.read()
 
     if mode in ['-a', '-add']:
