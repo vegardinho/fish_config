@@ -43,7 +43,6 @@ abbr -a -g utgz tar -xzvf
 abbr -a -g efish code $__fish_config_dir/config.fish
 abbr -a -g estat code $__fish_config_dir/conf.d/static_abbr.fish
 # abbr -a -g sfish 'for f in $__fish_config_dir/conf.d/*; source $f; end' # Source every file in conf.d
-abbr -a -g evim nvim ~/.vim/vimrc
 abbr -a -g essh nvim ~/.ssh/config
 
 # Other abbreviations
